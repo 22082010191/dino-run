@@ -17,7 +17,7 @@ h2, h3{
 @keyframes lari{
     0%{
         background: url('images/run1.png');
-        background-size: 50% 50%;
+        background-size: 75% 75%;
     }
     20%{
         background: url('images/run2.png');
