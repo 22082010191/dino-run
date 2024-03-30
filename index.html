@@ -1,90 +1,72 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Game Dino Run</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-    <body>
-        
-        <h2>Dino Run</h2>
-        <h3>Score : <span id="score">0</span></h3>
-        <div id="board" style="background-position: 0px;">
-           <div id="area">
-            <div id="dino"></div>
-            <div id="box" style="margin-left: 600px"></div>
-        </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KELOMPOK 13</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Koridor Kelompok 13</h1>
+    </header>
+    
+    <nav>
+        <a href="index.html">Biodata Anggota</a> <br>
+        <a href="ide_game.html">Dino Run</a><br>
+        <a href="index_game.html">Start Game</a><br>
+    </nav>
+
+    <div>
+        <section>
+            <img src="images/LUKMAN.jpg" alt="Error" width="150" height="200"><br>
+            <h2>Achmad Lukman Prayogidianto</h2>
+            <p> Saya adalah seorang mahasiswa yang berkomitmen untuk mencapai keunggulan dalam setiap tugas yang saya kerjakan. 
+                Saya memiliki kemampuan untuk memanajemen waktu, serta kemampuan untuk bekerja secara 
+                mandiri maupun dalam tim. Saya memiliki keahlian komunikasi yang baik dan mampu 
+                menyesuaikan diri dengan berbagai situasi. Saya selalu siap untuk belajar hal-hal 
+                baru dan memiliki motivasi yang tinggi untuk mencapai tujuan yang ditetapkan.
+            </p><br>
+            <h3>Profil Saya</h3>
+            <p>Jenis kelamin: Laki-Laki<br>
+                TTL: Surabaya, 1 April 2004<br>
+                Alamat: Tambak Dalam Baru I/42, Surabaya<br>
+                Hobi: Gaming<br>
+                No.Telp: 0881036637087<br>
+                Email: 22082010181@student.upnjatim.ac.id
+            </p>
+        </section>
+    
+        <section>
+            <img src="images/EKKI.jpg" alt="Error" width="150" height="200"><br>
+            <h2>Abiyasa Ekki Pratista</h2>
+            <p>Mahasiswa aktif semester 4 jurusan Sistem Informasi UPN "Veteran" Jawa Timur. Selama berkuliah saya mengikuti organisasi UKM di dalam kampus yaitu UKM Veteran Esports. hal tersebut menjadikan saya pribadi yang memiliki kemampuan bekerja dalam tim maupun individu dengan baik, memiliki kemampuan berkomunikasi dengan cukup baik, rajin, disiplin, serta bersikap jujur, dan bertanggung jawab
+            </p>
+            <h3>Profil Saya</h3>
+            <p>Jenis kelamin: Laki-Laki<br>
+                TTL: Banjarbaru, 18 Desember 2003<br>
+                Alamat: Jl. Tamasa II/5 Waru, Sidoarjo<br>
+                Hobi: Bermain musik<br>
+                No.Telp: 08113212799<br>
+                Email: 22082010191@student.upnjatim.ac.id
+            </p>
+        </section>
+    
+        <section>
+            <img src="images/DINDA.jpg" alt="Error" width="150" height="200"><br>
+            <h2>Dinda Nur Halisa</h2>
+            <p>Mahasiswa aktif semester 6 jurusan sistem informasi UPN "Veteran" Jawa Timur. Selama berkuliah saya mengikuti beberapa kali kepanitiaan. Selai itu, saya juga beberapa kali mengikuti volunteer diluar kegiatan kampus.
+            </p><br>
+            <h3>Profil Saya</h3>
+            <p>Jenis kelamin: Perempuan<br>
+                TTL: Probolinggo, 11 Januari 2003<br>
+                Alamat: Jl. Pahlawan 93, Probolinggo<br>
+                Hobi: Menonton Film<br>
+                No.Telp: 082146510812<br>
+                Email: 21082010032@student.upnjatim.ac.id
+            </p>
+        </section>
     </div>
-
-
-           <script type="text/javascript">
-            var isMoving = true;
-            function setBackgroundMoving() {
-                if(isMoving == true){
-                setTimeout(function() {
-
-                    //background berjalan
-                var bg = document.getElementById('board')
-                bg.style.backgroundPosition = (parseInt(bg.style.backgroundPosition.replace('px', ''))-1) + 'px';
-
-                    //update live score
-                document.getElementById('score').innerHTML = 
-                    parseInt(document.getElementById('score').innerHTML) +1;
-
-                    //panggil fungsinya terus menerus (recursive)
-                setBackgroundMoving();
-                },5);
-            }
-            }
-
-            //inisialisasi fungsi background berjalan
-            setBackgroundMoving();
-
-            function setBoxMoving() {
-                var box = document.getElementById('box'),
-                    dino = document.getElementById('dino');
-
-                    setTimeout(function() {
-
-                        box.style.marginLeft = (parseInt(box.style.marginLeft.replace('px', '')) - 1 + 'px')
-
-                        if(parseInt(box.style.marginLeft.replace('px', '')) < -100){
-                            box.style.marginLeft = "600px";
-                        }
-                        
-                        if(dino.offsetTop + 50 >= box.offsetTop && 
-                        dino.offsetLeft + 50 >= box.offsetLeft && 
-                        dino.offsetTop + 50 <= box.offsetTop + 50 &&
-                        dino.offsetLeft <= box.offsetLeft + 50) {
-                            alert('Game Over, Score anda : ' + document.getElementById('score').innerHTML);
-                            dino.setAttribute('class','freeze')
-                            isMoving = false;
-                        }else{
-
-                            //panggil fungsinya terus menerus (recursive)
-                            setBoxMoving();
-                        }
-
-                    },5);   
-            }
-            //inisialisasi  box bergerak
-            setBoxMoving()
-            
-
-            window.addEventListener('keyup', function(e) {
-
-                //untuk mendeteksi tombol space
-                if(e.keyCode == 32) {
-                    //untuk setting dino lompat
-                    document.getElementById('dino').style.marginTop = "30px";
-                    document.getElementById('dino').setAttribute('class', 'freee');
-
-                    //kembalikan dino ke darat
-                    setTimeout(function() {
-                        document.getElementById('dino').style.marginTop = "170px"
-                        document.getElementById('dino').setAttribute('class', '');
-                    }, 1000);
-                }
-            });
-           </script>
-    </body>
+    
+</body>
 </html>
